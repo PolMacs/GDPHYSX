@@ -196,7 +196,7 @@ int main(void)
 
     P6::MyVector position(-300, 200, 0);
 
-    position += P6::MyVector(300, -200, 0);
+    //position += P6::MyVector(300, -200, 0);
 
     float x = position.x;
     float y = position.y;
