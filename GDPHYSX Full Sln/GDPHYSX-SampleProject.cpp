@@ -4,6 +4,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "P6/MyVector.h"
+
 #include <iostream>
 #include <string>
 
@@ -191,13 +193,18 @@ int main(void)
 
     glm::mat4 identity_martix = glm::mat4(1.0f);
 
-    float x = 0.0;
-    float y = 0.0;
-    float z = 0.0;
 
-    float scale_x = 0.5;
-    float scale_y = 0.5;
-    float scale_z = 0.5;
+    P6::MyVector position(-300, 200, 0);
+
+    position += P6::MyVector(300, -200, 0);
+
+    float x = position.x;
+    float y = position.y;
+    float z = position.z;
+
+    float scale_x = 300;
+    float scale_y = 300;
+    float scale_z = 300;
 
     float axis_x = 0.0;
     float axis_y = 1.0;
@@ -206,12 +213,12 @@ int main(void)
     float theta = 0.0;
 
     //Create projection matrix
-    glm::mat4 projectionMatrix = glm::ortho(-2.f, //L
-        2.f,//R
-        -2.f,//B
-        2.f,//T
-        -1.f,//Znear
-        1.f);//Zfar
+    glm::mat4 projectionMatrix = glm::ortho(-400.f, //L
+        400.f,//R
+        -400.f,//B
+        400.f,//T
+        -400.f,//Znear
+        400.f);//Zfar
     
 
     //glm::mat4 projectionMatrix = glm::perspective(glm::radians(60.f), // FOV
@@ -230,7 +237,7 @@ int main(void)
 
 
         //Start with the translation matrix
-        glm::mat4 transformation_matrix = glm::translate(identity_martix, glm::vec3(x, y, z));
+        glm::mat4 transformation_matrix = glm::translate(identity_martix, (glm::vec3)position);
 
         //Multiply the resulting matrix with the scale matrix
         transformation_matrix = glm::scale(transformation_matrix, glm::vec3(scale_x, scale_y, scale_z));
