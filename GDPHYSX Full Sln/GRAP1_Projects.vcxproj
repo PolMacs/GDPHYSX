@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClCompile Include="glad.c" />
     <ClCompile Include="GDPHYSX-SampleProject.cpp" />
+    <ClCompile Include="MyVector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Shaders\sample.frag">
@@ -168,6 +169,7 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyVector.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="tiny_obj_loader.h" />
   </ItemGroup>
