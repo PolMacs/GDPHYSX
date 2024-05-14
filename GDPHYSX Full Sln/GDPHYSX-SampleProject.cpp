@@ -193,7 +193,7 @@ int main(void)
 
     float x = 0.0;
     float y = 0.0;
-    float z = -5.0;
+    float z = 0.0;
 
     float scale_x = 0.5;
     float scale_y = 0.5;
