@@ -5,12 +5,21 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "P6/MyVector.h"
+#include "P6/P6Particle.h"
 
 #include <iostream>
 #include <string>
+#include <chrono>
 
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "tiny_obj_loader.h"
+
+using namespace std::chrono_literals;
+
+constexpr std::chrono::nanoseconds timestep(16ms);
+
+
+
 
 
 //Modifier for the model's x Position
@@ -46,6 +55,16 @@ void Key_Callback(GLFWwindow* window // Pointer to window
 
 int main(void)
 {
+
+    using clock = std::chrono::high_resolution_clock;
+    auto curr_time = clock::now();
+    auto prev_time = curr_time;
+    std::chrono::nanoseconds curr_ms(0);
+
+    P6::P6Particle particle = P6::P6Particle();
+
+    particle.Velocity = P6::MyVector(100, 0, 0);
+
     //load the vert shader file into a string stream
     std::fstream vertSrc("Shaders/Sample.vert");
     std::stringstream vertBuff;
